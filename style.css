@@ -155,8 +155,12 @@ nav {
 }
 
 .cols {
-  width: 50%;
+  width: 100%;
   z-index: 5;
+}
+
+.cols0 {
+  width: 100%;
 }
 
 .topline {
