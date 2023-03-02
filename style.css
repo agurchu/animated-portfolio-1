@@ -47,12 +47,16 @@ body {
 /*_______________Navigation Bar*/
 
 nav {
+  background: linear-gradient(45deg, var(--color-main), var(--color-light));
   display: flex;
   height: 80px;
   justify-content: space-around;
   line-height: 80px;
+  align-items: center;
   width: 100%;
-  z-index: 111;
+  z-index: 112;
+  position: fixed;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
@@ -67,6 +71,8 @@ nav {
   width: 250px;
   min-width: 240px;
   height: 80px;
+  margin-left: 20px;
+  z-index: 112;
 }
 
 .nav-items {
@@ -92,9 +98,103 @@ nav {
   transition: 0.3s ease-in-out;
 }
 
+.hamburger {
+  display: none;
+}
+
 .nav-items li:hover a,
 .links a:hover {
   color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .nav-items {
+    flex-direction: column;
+    background: linear-gradient(350deg, var(--color-main), var(--color-light));
+    top: -200px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    max-height: 0;
+    padding: 100px 15px;
+    transition: 0.3s;
+  }
+  .nav-items li {
+    display: none;
+  }
+
+  .nav-items.open {
+    max-height: 100vh;
+    top: 0;
+  }
+
+  .nav-items.open li {
+    display: block;
+  }
+  .hamburger {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    background: none;
+    border-radius: 10px;
+    margin-right: 15px;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .hamburger:hover {
+    color: var(--color-secondary);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .hamburger i {
+    position: absolute;
+  }
+
+  .hamburger .fa-times {
+    font-size: 0;
+  }
+
+  .nav-items.open .hamburger .fa-times {
+    font-size: 3rem;
+  }
+
+  .nav-items.open .hamburger .fa-hamburger {
+    font-size: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .links {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    right: 15px;
+    line-height: normal;
+    transform: translateY(-50%);
+  }
+
+  .links a {
+    margin: 0;
+  }
+  nav {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 800px) {
+  .links a {
+    font-size: 2rem;
+  }
+
+  .nav-items li a {
+    font-size: 2rem;
+  }
 }
 
 /*______________home page_______________*/
